@@ -1,0 +1,91 @@
+﻿@using MVC.Controllers
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model VMOperador
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+@if(Model.NM_NOME == "Hyan"){
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Matricula</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.ListaOperadores)
+        {     
+        <tr>
+            <td></td>
+            <td>@item.NM_NOME</td>
+            <td>@item.CD_LOG_USUARIO</td>
+                <td nowrap class="text-center">
+                    <button class="btn btn-secondary" id="btnEdit">Excluir</button>
+                </td>
+        </tr>
+        }
+       
+    </tbody>
+</table>
+}
+else {
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> Você não tem acesso.
+        <button type="button"  id="fechar"class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $("#btnEdit").click(function () {
+            $.ajax({
+                url: "https://localhost:7237/home/removerOperador",
+                data: { "CD_USUARIO": 33 },
+                type: 'POST'
+            })
+                .done(function (data) {
+
+                    alert("Sucesso!"+ data.sucesso);
+                    location.reload();
+
+                });
+        });
+        $("#btnSubmit").click(function () {
+            $.ajax({
+                url: "https://localhost:7237/home/EditarOperador",
+                data: { "CD_USUARIO": 33 },
+                type: 'POST'
+            })
+                .done(function (data) {
+
+                    alert("Sucesso!" + data.sucesso);
+
+                });
+        });
+
+        $("#fechar").click(function () {
+            $.ajax({
+                url: "https://localhost:7237/home/Login",
+                data: { "CD_USUARIO": 33 },
+                type: 'POST'
+            })
+                .done(function (data) {
+
+                    alert("Sucesso!" + data.sucesso);
+
+                });
+        });
+
+
+
+    });
+
+</script>
+
+
+
+                    
