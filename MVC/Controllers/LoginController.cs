@@ -30,6 +30,27 @@ namespace MVC.Controllers
 
             return View();
         }
+
+        public JsonResult Nomes()
+        {
+            string name;
+            ClaimsPrincipal claimsuser = HttpContext.User;
+            if (claimsuser.Identity.IsAuthenticated)
+            {
+                 name = "Hyan SEJA BEM VINDO!";
+            }
+            else
+            {
+                name = "";
+            }
+            return Json(new { name = name});
+
+        }
+
+        public IActionResult denied()
+        {
+            return View();
+        }
         [HttpPost]
         public  async Task<IActionResult> Login(VMOperador  model)
         {
@@ -39,7 +60,7 @@ namespace MVC.Controllers
                 List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.NameIdentifier,model.Email),
-                    new Claim("OtherProperties", "Example Role")
+                    new Claim("Role", "Role")
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,

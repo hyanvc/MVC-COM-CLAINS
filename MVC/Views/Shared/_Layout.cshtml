@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MVC</title>
@@ -23,10 +24,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Logout" asp-action="Logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <label id="tt"></label>
                         </li>
                     </ul>
                 </div>
@@ -51,3 +55,21 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "https://localhost:7237/Login/Nomes",
+            type: 'GET'
+        })
+            .done(function (data) {
+                //window.location.href = "Index/?NM_NOME=" + bb;
+                $("#tt").html(data.name);
+            });
+
+    });
+
+
+
+</script>

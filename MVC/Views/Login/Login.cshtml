@@ -10,25 +10,29 @@
 </div>
 <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <label class="form-check-label" id="permanente" for="exampleCheck1">Check me out</label>
 </div>
 <button type="submit" id="btenvi" class="btn btn-primary">Submit</button>
 
 <script>
+
+
     $(document).ready(function () {
         $("#btenvi").click(function () {
             var senha = $("#exampleInputPassword1").val();
             var email = $("#exampleInputEmail1").val();
+            var permanente = $("input[type='checkbox']").val();
+
             var bb = "Hyan";
 
             $.ajax({
                 url: "https://localhost:7237/Login/Login",
-                data: { "PassWord": senha, "EMAIL": email },
+                data: { "PassWord": senha, "EMAIL": email, "KeepLoggedIn": permanente },
                 type: 'POST'
             })
                 .done(function (data) {
                     //window.location.href = "Index/?NM_NOME=" + bb;
-                    window.location.href = "https://localhost:7237/";
+                    window.location.href = "https://localhost:7237";
 
                 });
         });

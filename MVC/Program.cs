@@ -10,8 +10,13 @@ builder.Services.AddAuthentication(
     {
         option.LoginPath = "/Login/Login";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        option.AccessDeniedPath = "/Login/denied";
 
     });
+builder.Services.AddAuthorization(options =>
+options.AddPolicy("teste"
+, policy => policy.RequireClaim("Role", "Role")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +30,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseRouting();
 
 app.UseAuthorization();
