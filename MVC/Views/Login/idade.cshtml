@@ -1,0 +1,33 @@
+﻿<form>
+    <div class="row">
+       
+        <div class="col-md-4">
+            <input type="text" class="form-control" id="datavalue" placeholder="Data">
+            <button type="button" id="senddata" class="btn btn-primary">obter</button>
+        </div>
+    </div>
+</form>
+<img src="~/css/imagem.PNG" width="50">
+
+
+<script>
+
+
+    $(document).ready(function () {
+        $("#senddata").click(function () {
+            var data = $("#datavalue").val();
+
+            $.ajax({
+                url: "https://localhost:7237/Login/obteridade",
+                data: { "txtData": data },
+                type: 'POST'
+            })
+                .done(function (data) {
+                    //window.location.href = "Index/?NM_NOME=" + bb;
+                    alert("SUA IDADE É :" + data.anos);
+
+                });
+        });
+    });
+
+</script>

@@ -7,15 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\imagem.PNG" />
     <Content Remove="wwwroot\js\base.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\hyan.pdf" />
+    <None Include="wwwroot\css\imagem.PNG" />
     <None Include="wwwroot\js\base.js" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Grpc.Core" Version="2.46.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.2.0" />
+    <PackageReference Include="openrasta-hosting-aspnet" Version="2.5.2000" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 

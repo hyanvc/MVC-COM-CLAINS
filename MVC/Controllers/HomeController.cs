@@ -27,17 +27,25 @@ namespace MVC.Controllers
         }
         public IActionResult Index(VMOperador model)
          {
-           
-            using var con = new SqlConnection("server=SCQ002\\HOMOLOG;Trusted_Connection=no;database=DBarearestrita;User ID=usr_arearestritahm;Password=ac3so$web!;Pooling=true;Min Pool Size=0;Max Pool Size=100;Connection Lifetime=0");
-            con.Open();
-            if(VMOperador.t != null)
-            {
-                model.NM_NOME = VMOperador.t;
-            }
-             model.ListaOperadores = (List<VMOperador>)con.Query<VMOperador>("select  top 10 *  from TB_USUARIO");
+            model.ListaOperadores = (List<VMOperador>)GetListaAniversariantes();
+            //using var con = new SqlConnection("");
+            //con.Open();
+            //if(VMOperador.t != null)
+            //{
+            //    model.NM_NOME = VMOperador.t;
+            //}
+            // model.ListaOperadores = (List<VMOperador>)con.Query<VMOperador>("select  top 10 *  from TB_USUARIO");
             return View(model);
         }
-   
+
+
+        private IEnumerable<VMOperador> GetListaAniversariantes()
+        {
+            yield return new VMOperador { NM_NOME = "Carlos Henrique" };
+            yield return new VMOperador { NM_NOME = "Carlos Andrade" };
+            yield return new VMOperador { NM_NOME = "Carlos Alexandre" };
+            yield return new VMOperador { NM_NOME = "Carlos Viana" };
+        }
 
         public async Task<IActionResult> Logout()
         {
