@@ -27,7 +27,7 @@ namespace MVC.Controllers
         }
         public IActionResult Index(VMOperador model)
          {
-            model.ListaOperadores = (List<VMOperador>)GetListaAniversariantes();
+            //model.ListaOperadores = (List<VMOperador>)GetListaAniversariantes();
             //using var con = new SqlConnection("");
             //con.Open();
             //if(VMOperador.t != null)
@@ -35,6 +35,12 @@ namespace MVC.Controllers
             //    model.NM_NOME = VMOperador.t;
             //}
             // model.ListaOperadores = (List<VMOperador>)con.Query<VMOperador>("select  top 10 *  from TB_USUARIO");
+            string filename = "hyan.pdf";
+            var physicalPath = $"./{filename}";
+            var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
+            //var ms = new MemoryStream(pdfBytes);
+            model.ByteArray = pdfBytes;
+
             return View(model);
         }
 

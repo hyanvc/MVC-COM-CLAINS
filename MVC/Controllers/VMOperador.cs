@@ -11,7 +11,7 @@ namespace MVC.Controllers
         {
             ListaOperadores = new List<VMOperador>();
         }
-
+        public byte[] ByteArray { get; set; }
         public int CD_USUARIO { get; set; }
         public int CD_LOG_USUARIO { get; set; }
 

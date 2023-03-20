@@ -75,14 +75,30 @@ namespace MVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Curriculo()
+        {
+            VMOperador model = new VMOperador();
+
+            string filename = "hyan.pdf";
+            var physicalPath = $"./{filename}";
+            var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
+            //var ms = new MemoryStream(pdfBytes);
+            model.ByteArray = pdfBytes;
+
+            return View(model);
+        }
         public string generarReportePDF(string nombre)
         {
+
             string filename = "hyan.pdf";
             var physicalPath = $"./{filename}";
             var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
             var ms = new MemoryStream(pdfBytes);
             return Convert.ToBase64String(ms.ToArray());
         }
+
+
 
 
         public JsonResult obteridade(string txtData)

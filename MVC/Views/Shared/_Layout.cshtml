@@ -17,17 +17,18 @@
 				<a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active" asp-area="" asp-controller="Login" asp-action="graficos">Graficos</a>
-			</li>
-			<li class="nav-item">
 				<a class="nav-link active" asp-area="" asp-controller="Login" asp-action="cadastro">Cadastrar</a>
 			</li>			
 			<li class="nav-item">
 				<a class="nav-link active" asp-area="" asp-controller="Login" asp-action="idade">Tenho quantos anos?</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+				<a class="nav-link active" asp-area="" asp-controller="Login" asp-action="Curriculo">Curriculo</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+			</li>
+			
 		</ul>
 
 
@@ -77,7 +78,7 @@
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
 	@await RenderSectionAsync("Scripts", required: false)
-</body>5
+</body>
 </html>
 
 

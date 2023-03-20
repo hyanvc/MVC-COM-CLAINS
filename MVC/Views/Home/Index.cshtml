@@ -1,6 +1,6 @@
 ﻿@using MVC.Controllers
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Graficos";
 }
 @model VMOperador
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -10,76 +10,66 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
 
-<div  class="d-flex justify-content-center">
-    <div hidden id="btt"  style="height:100% ; width:100%" class="spinner-border" role="status">
-        <span class="sr-only"></span>
-    </div>
-</div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Data</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model.ListaOperadores)
-        {     
-        <tr>
-            <td>@item.NM_NOME</td>
-            <td>@item.CD_LOG_USUARIO</td>
-                <td nowrap class="text-center">
-                    <button class="btn btn-secondary" id="btnEdit">Excluir</button>
-                </td>
-        </tr>
-        }
-       
-    </tbody>
-</table>
+        TESTE - HYAN
+    </p>
+</figure>
 
 <script>
-    $(document).ready(function () {     
-        $("#btnA").click(function () {
-               $("#btt").toggle();
-
-
+    $(document).ready(function () {
+        Highcharts.chart('container', {
+            chart: {
+                type: 'variablepie'
+            },
+            title: {
+                text: 'VAI COMENDO.',
+                align: 'left'
+            },
+            tooltip: {
+                headerFormat: '',
+                pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+                    'Area (square km): <b>{point.y}</b><br/>' +
+                    'Population density (people per square km): <b>{point.z}</b><br/>'
+            },
+            series: [{
+                minPointSize: 10,
+                innerSize: '20%',
+                zMin: 0,
+                name: 'countries',
+                data: [{
+                    name: 'hyan',
+                    y: 505992,
+                    z: 92
+                }, {
+                    name: 'hyan',
+                    y: 551695,
+                    z: 119
+                }, {
+                    name: 'hyan',
+                    y: 312679,
+                    z: 121
+                }, {
+                    name: 'victor',
+                    y: 78865,
+                    z: 136
+                }, {
+                    name: 'victor',
+                    y: 301336,
+                    z: 200
+                }, {
+                    name: 'victor',
+                    y: 41284,
+                    z: 213
+                }, {
+                    name: 'victor',
+                    y: 357114,
+                    z: 235
+                }]
+            }]
         });
-
-  $("#btnEdit").click(function () {
-
-                    alert("Sucesso!");
-                    location.reload();
-        });
-        $("#btnSubmit").click(function () {
-            $.ajax({
-                url: "https://localhost:7237/home/EditarOperador",
-                data: { "CD_USUARIO": 33 },
-                type: 'POST'
-            })
-                .done(function (data) {
-
-                    alert("Sucesso!" + data.sucesso);
-
-                });
-        });
-
-        $("#fechar").click(function () {
-            $.ajax({
-                url: "https://localhost:7237/home/Login",
-                data: { "CD_USUARIO": 33 },
-                type: 'POST'
-            })
-                .done(function (data) {
-
-                    alert("Sucesso!" + data.sucesso);
-
-                });
-        });
-
-
-
     });
 
 
@@ -88,4 +78,3 @@
 
 
 
-                    
