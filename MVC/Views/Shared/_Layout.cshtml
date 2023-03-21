@@ -118,6 +118,18 @@
 		});
 
 
+		$("#sms").click(function () {
+
+			$.ajax({
+				url: "https://localhost:7237/Login/Send",
+				data: {},
+				type: 'GET'
+			})
+				.done(function (data) {
+				});
+		});
+
+
 	});
 
 
