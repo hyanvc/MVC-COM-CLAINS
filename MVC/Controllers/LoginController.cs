@@ -29,6 +29,7 @@ using Twilio.Types;
 using Twilio.Rest.Api.V2010.Account;
 using System.Net.Mail;
 using Twilio.TwiML.Messaging;
+using Microsoft.VisualBasic;
 
 namespace MVC.Controllers
 {
@@ -114,7 +115,7 @@ namespace MVC.Controllers
         public  JsonResult Send(SMSBuilder builder)
         {
             var blz = "ok";
-            SendEmail(blz);
+            //SendEmail(blz);
             builder.To = "5585988190112";
             builder.From = "5585988190112";
             builder.text = "teste!";
@@ -139,6 +140,23 @@ namespace MVC.Controllers
             return Json(new { re = resultados });
 
 
+        }
+
+        public string estruturaConsumirAPI()
+        {
+            ////var tall = new { from = builder.From, to = builder.To, contents };
+            //var tall = "ok";
+            //var body = JsonConvert.SerializeObject(tall);
+            //var client = new RestClient("https://api.zenvia.com/v2/channels/sms/messages");
+            //var request = new RestRequest(Method.POST);
+            //request.AddHeader("X-API-TOKEN", "hL7Jxb8-4ma9GqZzvwRnvCxx2NHMUADoxeZq");
+            //request.AddHeader("Content-Type", "application/json");
+            //request.AddParameter("application/json", body, ParameterType.RequestBody);
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; //verificar pois tem que ser tls12.
+            //var response = client.Execute(request);
+            //var resultados = response.StatusCode;
+
+            return "cel";
         }
         //TWILLO SMS//https://console.twilio.com/us1/develop/sms/try-it-out/send-an-sms
         //HyanVictorCunhaGomes
