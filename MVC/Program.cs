@@ -4,18 +4,35 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Estrutura de autenticação//
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option =>
     {
+        //caminho de autenticacao do login //
         option.LoginPath = "/Login/Login";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        //caminho de error de autenticacao //
         option.AccessDeniedPath = "/Login/denied";
 
     });
 builder.Services.AddAuthorization(options =>
-options.AddPolicy("teste"
-, policy => policy.RequireClaim("Role", "Role")));
+{
+    // adiciona a política padrão
+    //options.AddPolicy("defaultPolicy", policy =>
+    //{
+    //    policy.RequireAuthenticatedUser();
+    //});
+
+    // adiciona a nova política
+    options.AddPolicy("teste", policy =>
+    {
+        policy.RequireClaim("Role", "Role");
+    });
+});
+
+
 
 var app = builder.Build();
 

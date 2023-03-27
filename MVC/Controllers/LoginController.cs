@@ -278,4 +278,30 @@ namespace MVC.Controllers
         }
 
     }
+
+    // futura AUTENTICAÇÃO //
+    //[HttpPost]
+    //public async Task<IActionResult> Login(string username, string password)
+    //{
+    //    // Verificar o nome de usuário e a senha aqui ...
+
+    //    var claims = new List<Claim>
+    //    {
+    //        new Claim(ClaimTypes.Name, username),
+    //        new Claim("custom_claim_type", "value")
+    //    };
+    //    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+    //    var principal = new ClaimsPrincipal(identity);
+
+    //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+    //    return RedirectToAction("MyAction");
+    //}
+
+    //[ServiceFilter(typeof(CustomAuthorizationFilter), Arguments = new object[] { "custom_claim_type" })]
+    //public IActionResult MyAction()
+    //{
+    //    // Ação somente permitida para usuários com a reivindicação personalizada "custom_claim_type"
+    //    return View();
+    //}
 }

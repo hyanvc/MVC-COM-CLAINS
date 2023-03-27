@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MVC.Controllers
 {
-    [Authorize(Policy = "teste")]
 
 
     public class HomeController : Controller
@@ -21,10 +20,14 @@ namespace MVC.Controllers
         private readonly ILogger<HomeController> _logger;
         VMOperador VMOperador = new VMOperador();
        
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+
+        [Authorize(Policy = "teste")]
+
         public IActionResult Index(VMOperador model)
          {
             //model.ListaOperadores = (List<VMOperador>)GetListaAniversariantes();

@@ -31,26 +31,47 @@
 
 <script>
 
-    $(document).ready(function () {
-        $("#sendlogin").click(function () {
-            var senha = $("#exampleInputPassword1").val();
-            var email = $("#exampleInputEmail1").val();
+    $('#exampleInputPassword1').keypress(function (event) {
+        if (event.keyCode === 13) { // código da tecla "Enter"
+            // sua função jQuery aqui
+                var senha = $("#exampleInputPassword1").val();
+                var email = $("#exampleInputEmail1").val();
 
-            var bb = "Hyan";
+                var bb = "Hyan";
 
-            $.ajax({
-                url: "https://localhost:7237/Login/Login",
-                data: { "PassWord": senha, "EMAIL": email},
-                type: 'POST'
-            })
-                .done(function (data) {
-                    //window.location.href = "Index/?NM_NOME=" + bb;
-                    window.location.href = "https://localhost:7237";
+                $.ajax({
+                    url: "https://localhost:7237/Login/Login",
+                    data: { "PassWord": senha, "EMAIL": email },
+                    type: 'POST'
+                })
+                    .done(function (data) {
+                        //window.location.href = "Index/?NM_NOME=" + bb;
+                        window.location.href = "https://localhost:7237";
 
-                });
-        });
-
-
+                    });
+        }
     });
+
+    //$(document).ready(function () {
+    //    $("#sendlogin").click(function () {
+    //        var senha = $("#exampleInputPassword1").val();
+    //        var email = $("#exampleInputEmail1").val();
+
+    //        var bb = "Hyan";
+
+    //        $.ajax({
+    //            url: "https://localhost:7237/Login/Login",
+    //            data: { "PassWord": senha, "EMAIL": email},
+    //            type: 'POST'
+    //        })
+    //            .done(function (data) {
+    //                //window.location.href = "Index/?NM_NOME=" + bb;
+    //                window.location.href = "https://localhost:7237";
+
+    //            });
+    //    });
+
+
+    //});
 
 </script>
