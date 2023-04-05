@@ -30,6 +30,7 @@ using Twilio.Rest.Api.V2010.Account;
 using System.Net.Mail;
 using Twilio.TwiML.Messaging;
 using Microsoft.VisualBasic;
+using QRCoder;
 
 namespace MVC.Controllers
 {
@@ -86,6 +87,39 @@ namespace MVC.Controllers
         public IActionResult idade()
         {
             return View();
+        }
+
+        public byte[] methodpix()
+        {
+            string nomeBeneficiario = "hyan";
+            string cidadeBeneficiario = "Fortaleza";
+            string chavePix = "00888609302";
+
+            // Valor da transação em centavos
+            int valor = 5000;
+
+            // Monta o payload do QR Code
+            string payload = "000201" +
+                "26330014BR.GOV.BCB.PIX0119" + chavePix + "52040000" + valor.ToString("D10") +
+                "5802BR" +
+                "5911" + nomeBeneficiario + "6009" + cidadeBeneficiario +
+                "62070503***" +
+                "6304";
+
+            var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new BitmapByteQRCode(qrCodeData);
+            var qrCodeImage = qrCode.GetGraphic(10);
+
+            VMOperador model = new VMOperador();
+
+            //string filename = "hyan.pdf";
+            //var physicalPath = $"./{filename}";
+            //var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
+            //var ms = new MemoryStream(pdfBytes);
+            model.ByteArray = qrCodeImage;
+
+            return qrCodeImage;
         }
 
         public IActionResult Curriculo()
