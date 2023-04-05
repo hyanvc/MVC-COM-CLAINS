@@ -31,6 +31,9 @@ using System.Net.Mail;
 using Twilio.TwiML.Messaging;
 using Microsoft.VisualBasic;
 using QRCoder;
+using ZXing;
+using OpenRasta.Web;
+using ZXing.QrCode.Internal;
 
 namespace MVC.Controllers
 {
@@ -122,6 +125,21 @@ namespace MVC.Controllers
             return qrCodeImage;
         }
 
+        public byte[] LinksSiteQRCODE()
+        {
+
+            // Define o link que será codificado no QR Code
+            string link = "https://www.mulherpelada.com.br/";
+
+            // Cria o QR Code
+            var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new BitmapByteQRCode(qrCodeData);
+            var qrCodeImage = qrCode.GetGraphic(10);
+
+            return qrCodeImage;
+        }
+
         public IActionResult Curriculo()
         {
             VMOperador model = new VMOperador();
@@ -130,7 +148,7 @@ namespace MVC.Controllers
             var physicalPath = $"./{filename}";
             var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
             //var ms = new MemoryStream(pdfBytes);
-            model.ByteArray = pdfBytes;
+            model.ByteArray = LinksSiteQRCODE();
 
             return View(model);
         }
