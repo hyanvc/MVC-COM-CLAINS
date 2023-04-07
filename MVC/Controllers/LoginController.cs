@@ -34,6 +34,9 @@ using QRCoder;
 using ZXing;
 using OpenRasta.Web;
 using ZXing.QrCode.Internal;
+using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace MVC.Controllers
 {
@@ -125,7 +128,21 @@ namespace MVC.Controllers
             return qrCodeImage;
         }
 
-        public byte[] LinksSiteQRCODE()
+        public byte[] LinksSiteQRCODE(string qrcodelink)
+        {
+
+            // Define o link que será codificado no QR Code
+            string link = qrcodelink;
+
+            // Cria o QR Code
+            var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new BitmapByteQRCode(qrCodeData);
+            var qrCodeImage = qrCode.GetGraphic(10);
+
+            return qrCodeImage;
+        }
+        public JsonResult LinksSiteQRCODEJson()
         {
 
             // Define o link que será codificado no QR Code
@@ -137,7 +154,7 @@ namespace MVC.Controllers
             var qrCode = new BitmapByteQRCode(qrCodeData);
             var qrCodeImage = qrCode.GetGraphic(10);
 
-            return qrCodeImage;
+            return Json(new { qrcodelink = qrCodeImage });
         }
 
         public IActionResult Curriculo()
@@ -148,10 +165,48 @@ namespace MVC.Controllers
             var physicalPath = $"./{filename}";
             var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
             //var ms = new MemoryStream(pdfBytes);
-            model.ByteArray = LinksSiteQRCODE();
+            model.ByteArray = pdfBytes;
 
             return View(model);
         }
+
+        //public ActionResult GerarLinkQRCODEs(string qrcodelink)
+        //{
+        //    // lógica para encurtar a URL
+        //    string urlEncurtada = "http://minhaurlencurtada.com/" + qrcodelink;
+
+        //    // redireciona para a ação "GerarLinkQRCODE" no mesmo controlador, passando a URL encurtada como parâmetro
+        //    return RedirectToAction("GerarLinkQRCODE", new { qrcodelink = urlEncurtada });
+        //}
+
+        //public ActionResult GerarLinkQRCODE(string qrcodelink)
+        //{
+        //    // lógica para exibir a página com o link encurtado
+        //    return View();
+        //}
+
+
+        public IActionResult GerarLinkQRCODE(string qrcodelink)
+        {
+            // Define o link que será codificado no QR Code
+            string link = qrcodelink;
+
+            // Cria o QR Code
+            var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new BitmapByteQRCode(qrCodeData);
+            var qrCodeImage = qrCode.GetGraphic(10);
+            VMOperador view = new VMOperador();
+            view.ByteArray = qrCodeImage;
+            return View(view);
+        }
+
+
+        public IActionResult EntradasqrCode()
+        {       
+            return View();
+        }
+
         public string generarReportePDF(string nombre)
         {
             

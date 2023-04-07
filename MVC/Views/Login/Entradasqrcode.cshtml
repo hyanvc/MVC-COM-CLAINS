@@ -1,0 +1,23 @@
+﻿<form>
+    <div class="row">
+
+        <div class="col-md-4">
+            <input type="text" class="form-control" id="datavalue" placeholder="link">
+            <button type="button" id="sendrqcode" class="btn btn-primary">obter</button>
+        </div>
+    </div>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+        $("#sendrqcode").click(function () {
+            var data = $("#datavalue").val();
+
+            // faz uma requisição GET para a action "GerarLinkQRCODE" na controller "Login", passando o valor de "data" como parâmetro "qrcodelink"
+            window.location.href = "/Login/GerarLinkQRCODE?qrcodelink=" + data;
+        });
+    });
+
+
+</script>
