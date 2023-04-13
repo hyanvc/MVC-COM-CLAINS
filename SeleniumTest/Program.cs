@@ -15,6 +15,7 @@ class Program
 
             Console.WriteLine("Digite sua senha");
             var senha = Console.ReadLine();
+            senha = "Hyan2046";
 
             Console.WriteLine("agora digite o usuario pra quem você quer enviar mensagem:");
             var destinatario = Console.ReadLine();
@@ -70,11 +71,12 @@ class Program
 
 
         //WHATS APP//
-
+        //IWebDriver driver = new ChromeDriver();
+        //driver.Navigate().GoToUrl("https://web.whatsapp.com/");
         //Thread.Sleep(15000);
         //// Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
         //IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
-        //searchBox.SendKeys("nabaaau" + Keys.Enter);
+        //searchBox.SendKeys("imbecil" + Keys.Enter);
         //Thread.Sleep(10000);
 
         //// Aguarde o chat do usuário carregar
@@ -83,8 +85,8 @@ class Program
         //while (true)
         //{
         //    IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
-        //    messageBox.SendKeys(" vou te enviar mensagens a cada 10 secs." + Keys.Enter);
-        //    Thread.Sleep(10000);
+        //    messageBox.SendKeys(" vou te enviar mensagens a cada 10 secs, ok IMBE?" + Keys.Enter);
+        //    //Thread.Sleep(1000);
         //}
 
 
