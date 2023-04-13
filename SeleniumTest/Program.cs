@@ -5,23 +5,58 @@ class Program
 {
     static void Main(string[] args)
     {
-        IWebDriver driver = new ChromeDriver();
+        bool continuar = true;
+        while (continuar)
+        {
+            Console.WriteLine("Oi seja bem vindo ao log automatico no instagram!");
 
-        driver.Navigate().GoToUrl("https://www.instagram.com/");
+            Console.WriteLine("Digite seu user:");
+            var usuario = Console.ReadLine();
 
+            Console.WriteLine("Digite sua senha");
+            var senha = Console.ReadLine();
 
-        // logar  no  INSTAGRAM/
+            Console.WriteLine("agora digite o usuario pra quem você quer enviar mensagem:");
+            var destinatario = Console.ReadLine();
 
-        //IWebElement userinput = driver.FindElement(By.CssSelector("input[name='username']"));
-        //userinput.SendKeys("LOGIN");
+            Console.WriteLine("a mensagem:");
+            var mensagemdestinatario = Console.ReadLine();
 
-        //IWebElement senhaInput = driver.FindElement(By.CssSelector("input[name='password']"));
-        //senhaInput.SendKeys("SENHA");
-        //senhaInput.SendKeys(Keys.Enter);
+            IWebDriver driver = new ChromeDriver();
+            driver.Navigate().GoToUrl("https://www.instagram.com/");
 
-        //IWebElement element = driver.FindElement(By.ClassName("_a9--"));
-        //element.Click();
+            //logar no INSTAGRAM /
+            Thread.Sleep(10000);
+            IWebElement userinput = driver.FindElement(By.CssSelector("input[name='username']"));
+            userinput.SendKeys(usuario);
 
+            IWebElement senhaInput = driver.FindElement(By.CssSelector("input[name='password']"));
+            senhaInput.SendKeys(senha);
+            senhaInput.SendKeys(Keys.Enter);
+
+            Thread.Sleep(10000);
+
+            driver.Navigate().GoToUrl("https://www.instagram.com/" + destinatario);
+
+            Thread.Sleep(7000);
+            IWebElement enviarmensagembutton = driver.FindElement(By.CssSelector("div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1i64zmx.x1n2onr6.x6ikm8r.x10wlt62.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1"));
+
+            enviarmensagembutton.Click();
+            Thread.Sleep(7000);
+
+            Thread.Sleep(7000);
+
+            IWebElement areadetexto = driver.FindElement(By.TagName("textarea"));
+            areadetexto.SendKeys(mensagemdestinatario);
+            areadetexto.SendKeys(Keys.Enter);
+
+            Console.WriteLine("mensagem enviada... aperte enter para repetir o processo...caso não, aperte qualquer tecla");
+            var key = Console.ReadKey();
+            if (key.Key != ConsoleKey.Enter)
+            {
+                continuar = false;
+            }
+        }
 
 
 
@@ -36,21 +71,21 @@ class Program
 
         //WHATS APP//
 
-        Thread.Sleep(15000);
-        // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
-        IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
-        searchBox.SendKeys("nabaaau" + Keys.Enter);
-        Thread.Sleep(10000);
+        //Thread.Sleep(15000);
+        //// Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
+        //IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
+        //searchBox.SendKeys("nabaaau" + Keys.Enter);
+        //Thread.Sleep(10000);
 
-        // Aguarde o chat do usuário carregar
-        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        Thread.Sleep(10000);
-        while (true)
-        {
-            IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
-            messageBox.SendKeys(" vou te enviar mensagens a cada 10 secs." + Keys.Enter);
-            Thread.Sleep(10000);
-        }
+        //// Aguarde o chat do usuário carregar
+        //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        //Thread.Sleep(10000);
+        //while (true)
+        //{
+        //    IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+        //    messageBox.SendKeys(" vou te enviar mensagens a cada 10 secs." + Keys.Enter);
+        //    Thread.Sleep(10000);
+        //}
 
 
         // LOGICA PRA UMA ALTERNATIVA DE CHAT GPT
