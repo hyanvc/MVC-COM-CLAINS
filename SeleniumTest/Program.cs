@@ -7,12 +7,39 @@ class Program
     {
         IWebDriver driver = new ChromeDriver();
 
-        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+        driver.Navigate().GoToUrl("https://www.instagram.com/");
+
+
+        // logar  no  INSTAGRAM/
+
+        //IWebElement userinput = driver.FindElement(By.CssSelector("input[name='username']"));
+        //userinput.SendKeys("LOGIN");
+
+        //IWebElement senhaInput = driver.FindElement(By.CssSelector("input[name='password']"));
+        //senhaInput.SendKeys("SENHA");
+        //senhaInput.SendKeys(Keys.Enter);
+
+        //IWebElement element = driver.FindElement(By.ClassName("_a9--"));
+        //element.Click();
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //WHATS APP//
 
         Thread.Sleep(15000);
         // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
         IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
-        searchBox.SendKeys("orkut" + Keys.Enter);
+        searchBox.SendKeys("nabaaau" + Keys.Enter);
         Thread.Sleep(10000);
 
         // Aguarde o chat do usuário carregar
