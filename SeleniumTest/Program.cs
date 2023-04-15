@@ -100,58 +100,115 @@ class Program
 
 
         //WHATS APP//
-        IWebDriver driver = new ChromeDriver();
-        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
-        Thread.Sleep(15000);
-        // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
-        IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
-        searchBox.SendKeys("imbecil" + Keys.Enter);
-        Thread.Sleep(10000);
-
-        // Aguarde o chat do usuário carregar
-        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        Thread.Sleep(10000);
-        while (true)
-        {
-            IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
-            messageBox.SendKeys(" vou te enviar mensagens a cada 10 secs, ok IMBE?" + Keys.Enter);
-            //Thread.Sleep(1000);
-        }
-
-
-
-
-
-
-        //WHATS APP COM LOGICA DE ULTIMA MENSAGEM//
         //IWebDriver driver = new ChromeDriver();
         //driver.Navigate().GoToUrl("https://web.whatsapp.com/");
         //Thread.Sleep(15000);
         //// Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
         //IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
-        //searchBox.SendKeys("Suryah Almeida" + Keys.Enter);
+        //searchBox.SendKeys("imbecil" + Keys.Enter);
         //Thread.Sleep(10000);
 
         //// Aguarde o chat do usuário carregar
         //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         //Thread.Sleep(10000);
-        //IWebElement messageContainer = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+        //while (true)
+        //{
+        //    IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+        //    messageBox.SendKeys(" vou te enviar mensagens a cada 10 secs, ok IMBE?" + Keys.Enter);
+        //    //Thread.Sleep(1000);
+        //}
 
 
 
-        ////ENCONTRA A ULTIMA MENSAGEM ENVIADA NO WPP //
-        //IWebElement lastMessage = messageContainer.FindElement(By.XPath(".//div[@class='_2WxO4']/div[last()]//span[contains(@class, 'selectable-text')][last()]"));
-        //List<IWebElement> listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
-        //IWebElement ultimamensagem = listademensagens.LastOrDefault();
-        //string ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
 
 
-        ////while (true)
-        ////{
-        //IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
-        //messageBox.SendKeys(ultimamensagemdetexto + Keys.Enter);
-        //Thread.Sleep(1000);
-        ////}
+
+        //WHATS APP COM LOGICA DE ULTIMA MENSAGEM// ++ INSTAGRAM
+        IWebDriver driver = new ChromeDriver();
+        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+        Thread.Sleep(15000);
+        // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
+        IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
+        searchBox.SendKeys("nabaaau" + Keys.Enter);
+        Thread.Sleep(10000);
+
+        // Aguarde o chat do usuário carregar
+        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        Thread.Sleep(10000);
+
+
+
+        //ENCONTRA A ULTIMA MENSAGEM ENVIADA NO WPP //
+
+        string senha = null;
+        string usuario = null;
+
+
+        while (true)
+        {
+            IWebElement messageContainer = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+            List<IWebElement> listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+            IWebElement ultimamensagem = listademensagens.LastOrDefault();
+            string ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
+            if (ultimamensagemdetexto != null && ultimamensagemdetexto == "quero logar no instagram")
+            {
+                IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+                messageBox.SendKeys("você quer entrar no instagram? ok digite seu usuario:" + Keys.Enter);
+                 listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+                 ultimamensagem = listademensagens.LastOrDefault();
+                 ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
+
+                while (ultimamensagemdetexto == "você quer entrar no instagram? ok digite seu usuario:")
+                {
+                    Thread.Sleep(4000);
+                    IWebElement messageContainer4 = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+                    List<IWebElement> listademensagens4 = messageContainer4.FindElements(By.ClassName("focusable-list-item")).ToList();
+                    IWebElement ultimamensagem4 = listademensagens4.LastOrDefault();
+                    ultimamensagemdetexto = ultimamensagem4.FindElement(By.ClassName("_11JPr")).Text;
+                    usuario = ultimamensagemdetexto;
+                }
+
+
+                    IWebElement messageContainer2 = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+                List<IWebElement> listademensagens2 = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+                IWebElement ultimamensagem2 = listademensagens2.LastOrDefault();
+                 usuario = ultimamensagem2.FindElement(By.ClassName("_11JPr")).Text;
+
+                messageBox.SendKeys("digite sua senha:" + Keys.Enter);
+                listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+                ultimamensagem = listademensagens.LastOrDefault();
+                ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
+                while (ultimamensagemdetexto == "digite sua senha:")
+                {
+                    IWebElement messageContainer3 = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+                    List<IWebElement> listademensagens3 = messageContainer3.FindElements(By.ClassName("focusable-list-item")).ToList();
+                    IWebElement ultimamensagem3 = listademensagens3.LastOrDefault();
+                    ultimamensagemdetexto = ultimamensagem3.FindElement(By.ClassName("_11JPr")).Text;
+                    senha = ultimamensagemdetexto;
+                }
+
+
+
+
+                driver.Navigate().GoToUrl("https://www.instagram.com/");
+
+                //logar no INSTAGRAM /
+                Thread.Sleep(10000);
+                IWebElement userinput = driver.FindElement(By.CssSelector("input[name='username']"));
+                userinput.SendKeys(usuario);
+
+                IWebElement senhaInput = driver.FindElement(By.CssSelector("input[name='password']"));
+                senhaInput.SendKeys(senha);
+                senhaInput.SendKeys(Keys.Enter);
+                Thread.Sleep(10000);
+                driver.Navigate().GoToUrl("https://www.instagram.com/hyanvc");
+                Thread.Sleep(600000);
+                driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+
+            }
+            Thread.Sleep(6000);
+
+        }
 
 
 
