@@ -353,6 +353,7 @@ class Program
                         //Console.WriteLine(driver.Url);
                         //driver.Navigate().GoToUrl("https://www.instagram.com/hyanvc");
                         Reset2(driver);
+                        Mainreset(driver);
                     }
                 }
 
@@ -411,6 +412,7 @@ class Program
                 messageBox.SendKeys("QRCODE GERADO!" + Keys.Enter);
                 Thread.Sleep(5000);
                 Reset2(driver);
+                Mainreset(driver);
             }
 
 
@@ -436,10 +438,12 @@ class Program
         IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
 
         messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
+        Thread.Sleep(1000);
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
+        Thread.Sleep(1000);
         messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        Thread.Sleep(1000);
         messageBox.SendKeys(Keys.Enter);
-        Thread.Sleep(15000);
 
     }
 
@@ -447,18 +451,20 @@ class Program
     {
 
         driver.Navigate().GoToUrl("https://web.whatsapp.com/");
-        Thread.Sleep(8000);
+        Thread.Sleep(15000);
         // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
         IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
         searchBox.SendKeys("nabaaau" + Keys.Enter);
         Thread.Sleep(10000);
         IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
-        messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
-        messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
-        messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
-        messageBox.SendKeys(Keys.Enter);
-        Thread.Sleep(8000);
 
+        messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
+        Thread.Sleep(1000);
+        messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
+        Thread.Sleep(1000);
+        messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        Thread.Sleep(1000);
+        messageBox.SendKeys(Keys.Enter);
     }
 
 }
