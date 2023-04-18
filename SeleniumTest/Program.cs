@@ -7,6 +7,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        IWebDriver driver = new ChromeDriver();
+        Reset(driver);
+        Mainreset(driver);
 
         // LOGICA TERCEIRIZADA GPT //  CHATSONIC
 
@@ -126,33 +129,164 @@ class Program
 
 
         //WHATS APP COM LOGICA DE ULTIMA MENSAGEM// ++ INSTAGRAM
-        IWebDriver driver = new ChromeDriver();
-        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
-        Thread.Sleep(15000);
-        // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
-        IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
-        searchBox.SendKeys("nabaaau" + Keys.Enter);
-        Thread.Sleep(10000);
+        //IWebDriver driver = new ChromeDriver();
+        //driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+        //Thread.Sleep(15000);
+        //// Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
+        //IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
+        //searchBox.SendKeys("nabaaau" + Keys.Enter);
+        //Thread.Sleep(10000);
 
-        // Aguarde o chat do usuário carregar
-        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        Thread.Sleep(10000);
+        //// Aguarde o chat do usuário carregar
+        //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        //Thread.Sleep(10000);
 
 
 
-        //ENCONTRA A ULTIMA MENSAGEM ENVIADA NO WPP //
+        ////ENCONTRA A ULTIMA MENSAGEM ENVIADA NO WPP //
 
+        //string senha = null;
+        //string usuario = null;
+
+
+        //while (true)
+        //{
+        //    IWebElement messageContainer = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+        //    List<IWebElement> listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+        //    IWebElement ultimamensagem = listademensagens.LastOrDefault();
+        //    string ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
+        //    if (ultimamensagemdetexto != null && ultimamensagemdetexto == "quero logar no instagram")
+        //    {
+        //        IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+        //        messageBox.SendKeys("você quer entrar no instagram? ok digite seu usuario:" + Keys.Enter);
+        //        listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+        //        ultimamensagem = listademensagens.LastOrDefault();
+        //        ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
+
+
+        //        while (ultimamensagemdetexto == "você quer entrar no instagram? ok digite seu usuario:")
+        //        {
+        //            Thread.Sleep(4000);
+
+        //            IWebElement messageContainer4 = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+        //            List<IWebElement> listademensagens4 = messageContainer4.FindElements(By.ClassName("focusable-list-item")).ToList();
+        //            IWebElement ultimamensagem4 = listademensagens4.LastOrDefault();
+        //            ultimamensagemdetexto = ultimamensagem4.FindElement(By.ClassName("_11JPr")).Text;
+        //            usuario = ultimamensagemdetexto;
+        //        }
+
+
+
+        //        IWebElement messageContainer2 = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+        //        List<IWebElement> listademensagens2 = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+        //        IWebElement ultimamensagem2 = listademensagens2.LastOrDefault();
+        //        usuario = ultimamensagem2.FindElement(By.ClassName("_11JPr")).Text;
+
+        //        messageBox.SendKeys("digite sua senha:" + Keys.Enter);
+        //        listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+        //        ultimamensagem = listademensagens.LastOrDefault();
+        //        ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
+        //        while (ultimamensagemdetexto == "digite sua senha:")
+        //        {
+        //            IWebElement messageContainer3 = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+        //            List<IWebElement> listademensagens3 = messageContainer3.FindElements(By.ClassName("focusable-list-item")).ToList();
+        //            IWebElement ultimamensagem3 = listademensagens3.LastOrDefault();
+        //            ultimamensagemdetexto = ultimamensagem3.FindElement(By.ClassName("_11JPr")).Text;
+        //            senha = ultimamensagemdetexto;
+        //        }
+
+        //        Thread.Sleep(5000);
+
+
+        //        driver.Navigate().GoToUrl("https://www.instagram.com/");
+
+        //        //logar no INSTAGRAM /
+        //        Thread.Sleep(14000);
+        //        IWebElement userinput = driver.FindElement(By.CssSelector("input[name='username']"));
+        //        userinput.SendKeys(usuario);
+
+        //        IWebElement senhaInput = driver.FindElement(By.CssSelector("input[name='password']"));
+        //        senha = "Hyan2046";
+        //        senhaInput.SendKeys(senha);
+        //        senhaInput.SendKeys(Keys.Enter);
+        //        Thread.Sleep(10000);
+        //        driver.Navigate().GoToUrl("https://www.instagram.com/hyanvc");
+        //        Thread.Sleep(600000);
+        //        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+
+        //    }
+        //    Thread.Sleep(6000);
+
+        //}
+
+
+
+
+
+
+        //WPP COM FUNÇÃO DE ENVIAR QRCODE//
+        //IWebDriver driver = new ChromeDriver();
+        //driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+        //Thread.Sleep(15000);
+        //// Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
+        //IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
+        //searchBox.SendKeys("abraola" + Keys.Enter);
+        //Thread.Sleep(10000);
+        //IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+        //messageBox.SendKeys("oi aqui é o bot, digite um link pra q seja QRCODE:" + Keys.Enter);
+
+
+        //// Define o link que será codificado no QR Code
+        //string link = "https://www.gsuplementos.com.br/";
+
+        //// Cria o QR Code
+        //var qrGenerator = new QRCodeGenerator();
+        //var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
+        //var qrCode = new BitmapByteQRCode(qrCodeData);
+        //var qrCodeImage = qrCode.GetGraphic(10);
+        //byte[] fileBytes = qrCodeImage;
+        //string tempFilePath = Path.GetTempFileName();
+        //tempFilePath = Path.ChangeExtension(tempFilePath, ".png");
+        //File.WriteAllBytes(tempFilePath, fileBytes);
+        //IWebElement attachButton = driver.FindElement(By.CssSelector("span[data-testid='clip'][data-icon='clip']"));
+        //attachButton.Click();
+        //IWebElement fileInput = driver.FindElement(By.CssSelector("input[type='file']"));
+        //fileInput.SendKeys(tempFilePath);
+        //IWebElement sendButton = driver.FindElement(By.CssSelector("span[data-testid='send']"));
+        //sendButton.Click();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //driver.Quit();
+    }
+
+    static void Mainreset(IWebDriver driver)
+    {
         string senha = null;
         string usuario = null;
+        string qrcode = null;
 
 
         while (true)
         {
             IWebElement messageContainer = driver.FindElement(By.CssSelector("div[data-tab='8']"));
             List<IWebElement> listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+            Thread.Sleep(9000);
             IWebElement ultimamensagem = listademensagens.LastOrDefault();
             string ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
-            if (ultimamensagemdetexto != null && ultimamensagemdetexto == "quero logar no instagram")
+            if (ultimamensagemdetexto != null && ultimamensagemdetexto == "1")
             {
                 IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
                 messageBox.SendKeys("você quer entrar no instagram? ok digite seu usuario:" + Keys.Enter);
@@ -190,85 +324,140 @@ class Program
                     IWebElement ultimamensagem3 = listademensagens3.LastOrDefault();
                     ultimamensagemdetexto = ultimamensagem3.FindElement(By.ClassName("_11JPr")).Text;
                     senha = ultimamensagemdetexto;
+                    Thread.Sleep(5000);
+
+                    while (ultimamensagemdetexto != "digite sua senha")
+                    {
+                        driver.Navigate().GoToUrl("https://www.instagram.com/");
+                        //logar no INSTAGRAM /
+                        Thread.Sleep(10000);
+                        IWebElement userinput = driver.FindElement(By.CssSelector("input[name='username']"));
+                        userinput.SendKeys(usuario);
+
+                        IWebElement senhaInput = driver.FindElement(By.CssSelector("input[name='password']"));
+                        senha = "Hyan2046";
+                        senhaInput.SendKeys(senha);
+                        senhaInput.SendKeys(Keys.Enter);
+                        Thread.Sleep(8000);
+                        driver.Navigate().GoToUrl("https://www.instagram.com/hyanvc");
+                        Thread.Sleep(12000);
+                        // Abre uma nova aba
+                        IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                        js.ExecuteScript("window.open()");
+
+                        // Navega para a nova aba
+                        driver.SwitchTo().Window(driver.WindowHandles[1]);
+                        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+
+                        // Volta para a primeira aba
+                        //driver.SwitchTo().Window(driver.WindowHandles[0]);
+                        //Console.WriteLine(driver.Url);
+                        //driver.Navigate().GoToUrl("https://www.instagram.com/hyanvc");
+                        Reset2(driver);
+                    }
                 }
 
-                Thread.Sleep(5000);
 
-
-                driver.Navigate().GoToUrl("https://www.instagram.com/");
-
-                //logar no INSTAGRAM /
-                Thread.Sleep(14000);
-                IWebElement userinput = driver.FindElement(By.CssSelector("input[name='username']"));
-                userinput.SendKeys(usuario);
-
-                IWebElement senhaInput = driver.FindElement(By.CssSelector("input[name='password']"));
-                senha = "Hyan2046";
-                senhaInput.SendKeys(senha);
-                senhaInput.SendKeys(Keys.Enter);
-                Thread.Sleep(10000);
-                driver.Navigate().GoToUrl("https://www.instagram.com/hyanvc");
-                Thread.Sleep(600000);
-                driver.Navigate().GoToUrl("https://web.whatsapp.com/");
 
             }
+
+            if (ultimamensagemdetexto != null && ultimamensagemdetexto == "2")
+            {
+                IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+                messageBox.SendKeys("QRCODE: digite o link para ser gerado:" + Keys.Enter);
+
+                while (!ultimamensagemdetexto.Contains("http://"))
+                {
+                    Thread.Sleep(4000);
+
+                    IWebElement messageContainer4 = driver.FindElement(By.CssSelector("div[data-tab='8']"));
+                    List<IWebElement> listademensagens4 = messageContainer4.FindElements(By.ClassName("focusable-list-item")).ToList();
+                    IWebElement ultimamensagem4 = listademensagens4.LastOrDefault();
+                    ultimamensagemdetexto = ultimamensagem4.FindElement(By.ClassName("_11JPr")).Text;
+                    qrcode = ultimamensagemdetexto;
+                }
+
+
+                listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
+                ultimamensagem = listademensagens.LastOrDefault();
+                ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
+
+
+                //// Define o link que será codificado no QR Code
+                string link = ultimamensagemdetexto;
+                messageBox.SendKeys("Gerando qrcode......" + Keys.Enter);
+
+                // Cria o QR Code
+                var qrGenerator = new QRCodeGenerator();
+                var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
+                var qrCode = new BitmapByteQRCode(qrCodeData);
+                var qrCodeImage = qrCode.GetGraphic(10);
+                byte[] fileBytes = qrCodeImage;
+                string tempFilePath = Path.GetTempFileName();
+                messageBox.SendKeys("quase la....." + Keys.Enter);
+                tempFilePath = Path.ChangeExtension(tempFilePath, ".png");
+                File.WriteAllBytes(tempFilePath, fileBytes);
+                Thread.Sleep(2000);
+                IWebElement attachButton = driver.FindElement(By.CssSelector("span[data-testid='clip'][data-icon='clip']"));
+                Thread.Sleep(2000);
+                attachButton.Click();
+                Thread.Sleep(2000);
+                IWebElement fileInput = driver.FindElement(By.CssSelector("input[type='file']"));
+                Thread.Sleep(2000);
+                fileInput.SendKeys(tempFilePath);
+                Thread.Sleep(4000);
+                IWebElement sendButton = driver.FindElement(By.CssSelector("span[data-testid='send']"));
+                sendButton.Click();
+                Thread.Sleep(4000);
+                messageBox.SendKeys("QRCODE GERADO!" + Keys.Enter);
+                Thread.Sleep(5000);
+                Reset2(driver);
+            }
+
+
+
+
+
+
+
             Thread.Sleep(6000);
 
         }
 
+    }
 
-
-
-
-
-        //WPP COM FUNÇÃO DE ENVIAR QRCODE//
-        //IWebDriver driver = new ChromeDriver();
+    static void Reset2(IWebDriver driver)
+    {
         //driver.Navigate().GoToUrl("https://web.whatsapp.com/");
         //Thread.Sleep(15000);
-        //// Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
-        //IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
-        //searchBox.SendKeys("imbecil" + Keys.Enter);
-        //Thread.Sleep(10000);
+        // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
+        Thread.Sleep(15000);
+        IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
+        searchBox.SendKeys("nabaaau" + Keys.Enter);
+        IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+        messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
+        Thread.Sleep(3000);
+        messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
+        messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        messageBox.SendKeys(Keys.Enter);
 
-
-        //// Define o link que será codificado no QR Code
-        //string link = "https://www.josola.com.br/";
-
-        //// Cria o QR Code
-        //var qrGenerator = new QRCodeGenerator();
-        //var qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
-        //var qrCode = new BitmapByteQRCode(qrCodeData);
-        //var qrCodeImage = qrCode.GetGraphic(10);
-        //byte[] fileBytes = qrCodeImage;
-        //string tempFilePath = Path.GetTempFileName();
-        //tempFilePath = Path.ChangeExtension(tempFilePath, ".png");
-        //File.WriteAllBytes(tempFilePath, fileBytes);
-        //IWebElement attachButton = driver.FindElement(By.CssSelector("span[data-testid='clip'][data-icon='clip']"));
-        //attachButton.Click();
-        //IWebElement fileInput = driver.FindElement(By.CssSelector("input[type='file']"));
-        //fileInput.SendKeys(tempFilePath);
-        //IWebElement sendButton = driver.FindElement(By.CssSelector("span[data-testid='send']"));
-        //sendButton.Click();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //driver.Quit();
     }
 
-    static void Mainreset()
+    static void Reset(IWebDriver driver)
     {
 
+        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+        Thread.Sleep(8000);
+        // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
+        IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
+        searchBox.SendKeys("nabaaau" + Keys.Enter);
+        Thread.Sleep(10000);
+        IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+        messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
+        messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
+        messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        messageBox.SendKeys(Keys.Enter);
+
     }
+
 }
