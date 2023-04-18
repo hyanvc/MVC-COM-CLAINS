@@ -283,7 +283,6 @@ class Program
         {
             IWebElement messageContainer = driver.FindElement(By.CssSelector("div[data-tab='8']"));
             List<IWebElement> listademensagens = messageContainer.FindElements(By.ClassName("focusable-list-item")).ToList();
-            Thread.Sleep(9000);
             IWebElement ultimamensagem = listademensagens.LastOrDefault();
             string ultimamensagemdetexto = ultimamensagem.FindElement(By.ClassName("_11JPr")).Text;
             if (ultimamensagemdetexto != null && ultimamensagemdetexto == "1")
@@ -435,11 +434,12 @@ class Program
         IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
         searchBox.SendKeys("nabaaau" + Keys.Enter);
         IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+
         messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
-        Thread.Sleep(3000);
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
         messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
         messageBox.SendKeys(Keys.Enter);
+        Thread.Sleep(15000);
 
     }
 
@@ -457,6 +457,7 @@ class Program
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
         messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
         messageBox.SendKeys(Keys.Enter);
+        Thread.Sleep(8000);
 
     }
 
