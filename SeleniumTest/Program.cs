@@ -37,6 +37,15 @@ class Program
                 qrcodeAUTO qrc = new qrcodeAUTO();
                 qrc.QrcodeAUTO(driver,ultimamensagemdetexto,messageContainer);
             }
+
+
+            if (ultimamensagemdetexto != null && ultimamensagemdetexto == "3")
+            {
+                InstagramSeguidores instagramSeguidores = new InstagramSeguidores();
+                instagramSeguidores.instagramAUTO(driver, messageContainer);
+            }
+
+
             Thread.Sleep(6000);
 
         }
@@ -53,11 +62,11 @@ class Program
         searchBox.SendKeys("nabaaau" + Keys.Enter);
         IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
 
-        messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
+        messageBox.SendKeys("Oi seja bem vindo " + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
         Thread.Sleep(1000);
-        messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        messageBox.SendKeys("como por exemplo, logar no instagram(1) ( indisponivel).... gerar qrcode(2), ganhar um seguidor(3) basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys(Keys.Enter);
 
@@ -74,11 +83,11 @@ class Program
         Thread.Sleep(10000);
         IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
 
-        messageBox.SendKeys("Oi seja bem vindo ao bot bil! " + Keys.Enter);
+        messageBox.SendKeys("Oi seja bem vindo! " + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
         Thread.Sleep(1000);
-        messageBox.SendKeys("como por exemplo, logar no instagram(1).... gerar qrcode(2),basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        messageBox.SendKeys("como por exemplo, logar no instagram(1) ( indisponivel).... gerar qrcode(2), ganhar um seguidor(3) basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys(Keys.Enter);
     }
