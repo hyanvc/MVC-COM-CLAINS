@@ -72,7 +72,7 @@ class Program
         Thread.Sleep(1000);
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
         Thread.Sleep(1000);
-        messageBox.SendKeys("como por exemplo, logar no instagram(1) ( indisponivel).... gerar qrcode(2), ganhar um seguidor(3) basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        messageBox.SendKeys("como por exemplo, logar no instagram(1) ( indisponivel).... gerar qrcode(2), ganhar um seguidor(3) ,   Converter de PDF para Word (4) basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys(Keys.Enter);
 
@@ -93,7 +93,7 @@ class Program
         Thread.Sleep(1000);
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
         Thread.Sleep(1000);
-        messageBox.SendKeys("como por exemplo, logar no instagram(1) ( indisponivel).... gerar qrcode(2), ganhar um seguidor(3) basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        messageBox.SendKeys("como por exemplo, logar no instagram(1) ( indisponivel).... gerar qrcode(2), ganhar um seguidor(3) ,   Converter de PDF para Word (4) basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys(Keys.Enter);
     }
