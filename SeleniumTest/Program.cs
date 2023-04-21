@@ -45,6 +45,12 @@ class Program
                 instagramSeguidores.instagramAUTO(driver, messageContainer);
             }
 
+            if (ultimamensagemdetexto != null && ultimamensagemdetexto == "4")
+            {
+                Conversor conversor = new Conversor();
+                conversor.ConverterPdfToWord(driver,messageContainer);
+            }
+
 
             Thread.Sleep(6000);
 
