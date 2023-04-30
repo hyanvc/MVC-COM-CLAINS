@@ -4,7 +4,7 @@
 
 <h2>Exemplo de paginação com Ajax</h2>
 
-<div class="form-group">
+<div class="form-group" id="test">
     <label for="registrosPorPagina">Registros por página:</label>
     <select class="form-control" id="registrosPorPagina">
         <option value="5">5</option>
@@ -15,8 +15,8 @@
 </div>
 
 <button class="btn btn-primary" id="btnObterDadosPaginados">Obter dados paginados</button>
+    <div id="dados-paginados"></div>
 
-<div id="dados-paginados"></div>
 
 @section scripts {
     <script>
@@ -34,7 +34,11 @@
                 type: "GET",
                 data: { pagina: pagina, registrosPorPagina: registrosPorPagina },
                 success: function (data) {
+
+                    $("#btnObterDadosPaginados").fadeOut();
                     $("#dados-paginados").html(data);
+                    $("#test").fadeOut();
+
                 }
             });
         }
