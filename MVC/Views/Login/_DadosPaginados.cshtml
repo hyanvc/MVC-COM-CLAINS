@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Dado>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Número</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Endereco</td>
+                <td>@item.Numero</td>
+            </tr>
+        }
+    </tbody>
+</table>

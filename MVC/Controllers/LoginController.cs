@@ -95,6 +95,98 @@ namespace MVC.Controllers
             return View();
         }
 
+        private List<Dado> GetDados()
+        {
+            List<Dado> dados = new List<Dado>();
+
+            for (int i = 1; i <= 25; i++)
+            {
+                dados.Add(new Dado
+                {
+                    Nome = $"Nome {i}",
+                    Endereco = $"Endereço {i}",
+                    Numero = i
+                });
+            }
+
+            return dados;
+        }
+
+        public IActionResult Mdados()
+        {
+            List<Dado> dados = new List<Dado>();
+
+            for (int i = 1; i <= 25; i++)
+            {
+                dados.Add(new Dado
+                {
+                    Nome = $"Nome {i}",
+                    Endereco = $"Endereço {i}",
+                    Numero = i
+                });
+            }
+
+            return View(dados);
+        }
+
+        public PartialViewResult ObterDadosPaginados(int pagina , int registrosPorPagina )
+        {
+            List<Dado> dados = ObterDados();
+            int totalRegistros = dados.Count();
+            int totalPaginas = (int)Math.Ceiling((decimal)totalRegistros / registrosPorPagina);
+            dados = dados.Skip((pagina - 1) * registrosPorPagina).Take(registrosPorPagina).ToList();
+
+            ViewBag.PaginaAtual = pagina;
+            ViewBag.TotalPaginas = totalPaginas;
+
+            return PartialView("_DadosPaginados", dados);
+        }
+
+        private List<Dado> ObterDados()
+        {
+            List<Dado> dados = new List<Dado>();
+
+            for (int i = 1; i <= 25; i++)
+            {
+                dados.Add(new Dado
+                {
+                    Nome = $"Nome {i}",
+                    Endereco = $"Endereço {i}",
+                    Numero = i
+                });
+            }
+
+            return dados;
+        }
+
+
+
+
+        public ActionResult MostrarDados(int pagina = 1, int registrosPorPagina = 10)
+        {
+            List<Dado> todosDados = GetDados();
+
+            // Calcula as informações de paginação
+            int totalRegistros = todosDados.Count();
+            int totalPaginas = (int)Math.Ceiling((double)totalRegistros / registrosPorPagina);
+
+            // Define a página atual
+            pagina = pagina < 1 ? 1 : pagina;
+            pagina = pagina > totalPaginas ? totalPaginas : pagina;
+
+            // Seleciona os dados da página atual
+            List<Dado> dadosPaginados = todosDados
+                .Skip((pagina - 1) * registrosPorPagina)
+                .Take(registrosPorPagina)
+                .ToList();
+
+            // Armazena as informações de paginação na ViewBag
+            ViewBag.PaginaAtual = pagina;
+            ViewBag.TotalPaginas = totalPaginas;
+            ViewBag.RegistrosPorPagina = registrosPorPagina;
+
+            return View(dadosPaginados);
+        }
         public byte[] methodpix()
         {
             string nomeBeneficiario = "hyan";

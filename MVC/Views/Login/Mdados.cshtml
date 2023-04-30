@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Exemplo de paginação com Ajax</h2>
+
+<div class="form-group">
+    <label for="registrosPorPagina">Registros por página:</label>
+    <select class="form-control" id="registrosPorPagina">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+    </select>
+</div>
+
+<button class="btn btn-primary" id="btnObterDadosPaginados">Obter dados paginados</button>
+
+<div id="dados-paginados"></div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#btnObterDadosPaginados").on("click", function () {
+                var registrosPorPagina = $("#registrosPorPagina").val();
+                var pagina = 1;
+                obterDadosPaginados(pagina, registrosPorPagina);
+            });
+        });
+
+        function obterDadosPaginados(pagina, registrosPorPagina) {
+            $.ajax({
+                url: "@Url.Action("ObterDadosPaginados", "Login")",
+                type: "GET",
+                data: { pagina: pagina, registrosPorPagina: registrosPorPagina },
+                success: function (data) {
+                    $("#dados-paginados").html(data);
+                }
+            });
+        }
+    </script>
+}

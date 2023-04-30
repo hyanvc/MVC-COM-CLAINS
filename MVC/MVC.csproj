@@ -18,12 +18,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Candor.Web.Mvc" Version="1.0.3" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNet.Mvc.FixedDisplayModes" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="openrasta-hosting-aspnet" Version="2.5.2000" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
     <PackageReference Include="QRCoder" Version="1.4.3" />
+    <PackageReference Include="RazorEngine" Version="3.10.0" />
     <PackageReference Include="RestSharp" Version="105.2.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="Twilio" Version="6.2.5" />
