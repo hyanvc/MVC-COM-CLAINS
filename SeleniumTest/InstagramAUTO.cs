@@ -1,6 +1,9 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,9 +70,32 @@ namespace SeleniumTest
                     senhaInput.SendKeys(senha);
                     senhaInput.SendKeys(Keys.Enter);
                     Thread.Sleep(8000);
-                    driver.Navigate().GoToUrl("https://www.instagram.com/hyanvc");
-                    Thread.Sleep(12000);
-                    // Abre uma nova aba
+                    driver.Navigate().GoToUrl("https://www.instagram.com/direct/inbox/");
+
+                     // ESSE WHILE EXCLUI CONVERSAS DO INSTAGRAM.
+                    while (true)
+                    {
+                        //driver.Navigate().GoToUrl("https://www.instagram.com/direct/inbox/");
+                        Thread.Sleep(5000);
+                        IList<IWebElement> conversas = driver.FindElements(By.CssSelector("div[role='listitem']"));
+                        // Encontre a primeira conversa na lista
+                        IWebElement primeiraConversa = conversas[1];
+                        primeiraConversa.Click();
+                        Thread.Sleep(1000);
+                        IWebElement informacoesConversa = driver.FindElement(By.CssSelector("svg[aria-label='Informações da conversa']"));
+                        Thread.Sleep(2000);
+                        informacoesConversa.Click();
+                        Thread.Sleep(2000);
+                        IWebElement botaoExcluir = driver.FindElement(By.XPath("//*[text()='Excluir bate-papo']"));
+                        botaoExcluir.Click();
+                        Thread.Sleep(2000);
+                        IWebElement botaooExcluir = driver.FindElement(By.CssSelector("button.xvs91rp"));
+                        Thread.Sleep(1000);
+                        botaooExcluir.Click();
+                    }
+                   
+
+
                     IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
                     js.ExecuteScript("window.open()");
 

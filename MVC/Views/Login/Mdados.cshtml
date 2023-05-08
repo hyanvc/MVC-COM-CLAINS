@@ -16,6 +16,8 @@
 
 <button class="btn btn-primary" id="btnObterDadosPaginados">Obter dados paginados</button>
     <div id="dados-paginados"></div>
+<div id="ds"></div>
+
 
 
 @section scripts {
@@ -37,6 +39,7 @@
 
                     $("#btnObterDadosPaginados").fadeOut();
                     $("#dados-paginados").html(data);
+                    $("#ds").html(data);
                     $("#test").fadeOut();
 
                 }
