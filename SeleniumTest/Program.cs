@@ -1,8 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using QRCoder;
 using SeleniumTest;
-using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
@@ -35,7 +33,7 @@ class Program
             if (ultimamensagemdetexto != null && ultimamensagemdetexto == "2")
             {
                 qrcodeAUTO qrc = new qrcodeAUTO();
-                qrc.QrcodeAUTO(driver,ultimamensagemdetexto,messageContainer);
+                qrc.QrcodeAUTO(driver, ultimamensagemdetexto, messageContainer);
             }
 
 
@@ -48,7 +46,7 @@ class Program
             if (ultimamensagemdetexto != null && ultimamensagemdetexto == "4")
             {
                 Conversor conversor = new Conversor();
-                conversor.ConverterPdfToWord(driver,messageContainer);
+                conversor.ConverterPdfToWord(driver, messageContainer);
             }
 
 
@@ -60,7 +58,7 @@ class Program
 
     public static void Reset2(IWebDriver driver)
     {
-        //driver.Navigate().GoToUrl("https://web.whatsapp.com/");
+        driver.Navigate().GoToUrl("https://web.whatsapp.com/");
         //Thread.Sleep(15000);
         // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
         Thread.Sleep(15000);
@@ -94,6 +92,26 @@ class Program
         messageBox.SendKeys("aqui temos algumas opções de automações " + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys("como por exemplo, logar no instagram(1) ( indisponivel).... gerar qrcode(2), ganhar um seguidor(3) ,   Converter de PDF para Word (4) basta digitar o número que acompanha cada função para realiza-la.  " + Keys.Enter);
+        Thread.Sleep(1000);
+        messageBox.SendKeys(Keys.Enter);
+    }
+
+
+
+    public static void Logado(IWebDriver driver)
+    {
+        Thread.Sleep(15000);
+        // Encontre a caixa de pesquisa e pesquise pelo usuário "nabaaau"
+        IWebElement searchBox = driver.FindElement(By.XPath("//div[@contenteditable='true']"));
+        searchBox.SendKeys("nabaaau" + Keys.Enter);
+        Thread.Sleep(10000);
+        IWebElement messageBox = driver.FindElement(By.XPath("//div[@contenteditable='true'][@data-tab='10']"));
+
+        messageBox.SendKeys("Você está logado no instagram!! " + Keys.Enter);
+        Thread.Sleep(1000);
+        messageBox.SendKeys("aqui temos algumas opções de automações: " + Keys.Enter);
+        Thread.Sleep(1000);
+        messageBox.SendKeys(" Excluir conversas do INSTAGRAM(1) , Curtir Publicação(2), Ganhar um seguidor(3), Deixar de Seguir alguém(4), Seguir Alguém(4).Basta Escolher um dos números levados a suas respectivad funções." + Keys.Enter);
         Thread.Sleep(1000);
         messageBox.SendKeys(Keys.Enter);
     }
