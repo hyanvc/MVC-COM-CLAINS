@@ -18,32 +18,27 @@
     <div id="dados-paginados"></div>
 <div id="ds"></div>
 
+<script>
+    function obter2() {
+        var registrosPorPagina = $("#registrosPorPagina").val();
+        var pagina = 1;
+        obterDadosPaginados(pagina, registrosPorPagina);
+    }
 
-
-@section scripts {
-    <script>
-        $(function () {
-            $("#btnObterDadosPaginados").on("click", function () {
-                var registrosPorPagina = $("#registrosPorPagina").val();
-                var pagina = 1;
-                obterDadosPaginados(pagina, registrosPorPagina);
-            });
+    function obterDadosPaginados(pagina, registrosPorPagina) {
+        $.ajax({
+            url: "@Url.Action("ObterDadosPaginados", "Login")",
+            type: "GET",
+            data: { pagina: pagina, registrosPorPagina: registrosPorPagina },
+            success: function (data) {
+                $("#btnObterDadosPaginados").fadeOut();
+                $("#dados-paginados").html(data);
+                $("#ds").html(data);
+                $("#test").fadeOut();
+            }
         });
+    }
 
-        function obterDadosPaginados(pagina, registrosPorPagina) {
-            $.ajax({
-                url: "@Url.Action("ObterDadosPaginados", "Login")",
-                type: "GET",
-                data: { pagina: pagina, registrosPorPagina: registrosPorPagina },
-                success: function (data) {
+    setInterval(obter2, 500);
+</script>
 
-                    $("#btnObterDadosPaginados").fadeOut();
-                    $("#dados-paginados").html(data);
-                    $("#ds").html(data);
-                    $("#test").fadeOut();
-
-                }
-            });
-        }
-    </script>
-}

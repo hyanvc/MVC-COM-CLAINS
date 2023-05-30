@@ -1,42 +1,14 @@
-﻿using System.Data.SqlClient;
-using System.Diagnostics;
-using Dapper;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using MVC.Models;
-using System.Configuration;
-using System.Numerics;
-using System;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using System.Xml.Linq;
-using System.Net.Sockets;
-using Microsoft.Extensions.Hosting.Internal;
-using Microsoft.AspNetCore.Hosting.Server;
-using Grpc.Core;
-using System.IO;
-using OpenRasta.Configuration.Fluent;
-using OpenRasta.Collections;
-using OpenRasta.TypeSystem;
-using System.Diagnostics.Metrics;
-using System.Net;
-using RestSharp;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Twilio;
-using Twilio.Types;
-using Twilio.Rest.Api.V2010.Account;
-using System.Net.Mail;
-using Twilio.TwiML.Messaging;
-using Microsoft.VisualBasic;
 using QRCoder;
-using ZXing;
-using OpenRasta.Web;
-using ZXing.QrCode.Internal;
-using System.Collections.Generic;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
+using RestSharp;
+using System.Net;
+using System.Security.Claims;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace MVC.Controllers
 {
@@ -109,16 +81,17 @@ namespace MVC.Controllers
             }
             return View(dados);
         }
-  
+
         public List<Dado> os()
         {
             List<Dado> dados = new List<Dado>();
             for (int i = 1; i <= 55; i++)
             {
+                Random rand = new Random();
                 dados.Add(new Dado
                 {
-                    Nome = $"Nome {i}",
-                    Endereco = $"Endereço {i}",
+                    Nome = $"Nome {rand.Next(1, 12)}",
+                    Endereco = $"Endereço  {rand.Next(1, 12)}",
                     Numero = i
                 });
             }
@@ -243,13 +216,13 @@ namespace MVC.Controllers
 
 
         public IActionResult EntradasqrCode()
-        {       
+        {
             return View();
         }
 
         public string generarReportePDF(string nombre)
         {
-            
+
             string filename = "hyan.pdf";
             var physicalPath = $"./{filename}";
             var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
@@ -259,7 +232,7 @@ namespace MVC.Controllers
 
 
         //ZENVIA ENVIO DE SMS//
-        public  JsonResult Send(SMSBuilder builder)
+        public JsonResult Send(SMSBuilder builder)
         {
             var blz = "ok";
             //SendEmail(blz);
@@ -320,7 +293,7 @@ namespace MVC.Controllers
             messageOptions.From = new PhoneNumber("+15177900641");
             messageOptions.Body = message;
 
-           var T = MessageResource.Create(messageOptions);
+            var T = MessageResource.Create(messageOptions);
             var k = T.Status;
             return T;
         }
