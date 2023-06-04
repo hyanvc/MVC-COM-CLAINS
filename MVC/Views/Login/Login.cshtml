@@ -126,6 +126,29 @@
 <script>
     $(document).ready(function () {
 
+
+        function atualizarrelogio() {
+
+            var Data = new Date();
+            var Horas = formatardata(Data.getHours());
+            var Minutos = formatardata(Data.getMinutes());
+            var Segundos = formatardata(Data.getSeconds());
+            var Relogio = Horas + ":" + Minutos + ":" + Segundos;
+            $('#username').attr('placeholder',"São exatamente:" + Relogio);
+        };
+
+
+
+        atualizarrelogio();
+
+
+        setInterval(atualizarrelogio, 1000);
+
+        function formatardata(number) {
+            return number < 10 ? "0" + number : number;
+        };
+
+
         $("#password").on("input", function () {
             var passwordValue = $(this).val();
 
@@ -166,11 +189,9 @@
                 passwordInput.attr("type", "text");
                 toggleButton.text("Ocultar");
 
-                //toggleButton.html("&#128064;"); // Altera para o ícone de "Ocultar"
             } else {
                 passwordInput.attr("type", "password");
                 toggleButton.text("Mostrar");
-                //togglebutton.html("&#128065;"); // altera para o ícone de "mostrar"
             }
         });
     });

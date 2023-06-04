@@ -123,18 +123,24 @@
             });
 
 
-            $("#btnmodo").click(function(){
-                var body = $("body");
-                if (body.css("background-color") === "rgb(0, 0, 0)") {
-                    body.css("background-color", "white");
-                    body.css("color", "black");
-                    $(this).text("MODO: white");
-                } else {
-                    body.css("background-color", "black");
-                    body.css("color", "white");
-                    $(this).text("MODO: black");
-                }
-            });
+        $("#btnmodo").click(function () {
+            var body = $("body");
+            if (body.css("background-color") === "rgb(0, 0, 0)") {
+                body.css("background-color", "white");
+                body.css("color", "black");
+                $(this).html("&#128161;&#xFE0E;"); // Lâmpada desligada
+                $(this).css("border", "none"); // Remover a borda
+                $(this).css("background-color", "white"); // Fundo do botão quando a lâmpada está desligada
+            } else {
+                body.css("background-color", "black");
+                body.css("color", "white");
+                $(this).html("&#128161;"); // Lâmpada ligada.
+                $(this).css("border", "none"); // Remover a borda
+                $(this).css("background-color", "black"); // Fundo do botão quando a lâmpada está ligada
+            }
+        });
+
+
         $("#aaa").click(function () {
 
             $.ajax({
