@@ -1,27 +1,4 @@
 ﻿<!DOCTYPE html>
-<style>
-    div {
-        background-color: #265c50;
-    }
-    html{
-        background-color: #265c50;
-    }
-
-    body {
-        background-color: #265c50;
-    }
-    head {
-        background-color: #265c50;
-    }
-
-    footer{
-        background-color: #265c50;
-    }
-
-    form{
-        background-color: #265c50;
-    }
-</style>
 <html lang="en">
 <head>
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -66,7 +43,6 @@
 
 
 
-
         @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC</a>
@@ -94,12 +70,15 @@
         </nav>*@
     </header>
     <div class="container">
+        <button id="btnmodo">MODO:</button>
+
         <main role="main" class="pb-3">
+
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer >
         <div class="container">
             Projeto de Hyan.
         </div>
@@ -113,6 +92,17 @@
 </body>
 </html>
 
+<style>
+
+    #btnmodo {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 9999; /* Para garantir que o botão fique acima dos demais elementos */
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+</style>
 
 
 <script>
@@ -133,7 +123,18 @@
             });
 
 
-
+            $("#btnmodo").click(function(){
+                var body = $("body");
+                if (body.css("background-color") === "rgb(0, 0, 0)") {
+                    body.css("background-color", "white");
+                    body.css("color", "black");
+                    $(this).text("MODO: white");
+                } else {
+                    body.css("background-color", "black");
+                    body.css("color", "white");
+                    $(this).text("MODO: black");
+                }
+            });
         $("#aaa").click(function () {
 
             $.ajax({

@@ -27,7 +27,14 @@ namespace MVC.Controllers
             if (claimsuser.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
 
-            return View();
+            VMOperador model = new VMOperador();
+
+            string filename = "instagram-logo.png";
+            var physicalPath = $"./{filename}";
+            var pdfBytes = System.IO.File.ReadAllBytes(physicalPath);
+            //var ms = new MemoryStream(pdfBytes);
+            model.ByteArray = pdfBytes;
+            return View(model);
         }
 
         public JsonResult Nomes()
