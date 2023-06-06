@@ -125,20 +125,35 @@
 
         $("#btnmodo").click(function () {
             var body = $("body");
+            var usernameLabel = $("#usernamelabel");
+            var passwordLabel = $("#passwordlabel");
+            var toogleocultar = $("#toogleocultar");
+
+
             if (body.css("background-color") === "rgb(0, 0, 0)") {
                 body.css("background-color", "white");
                 body.css("color", "black");
-                $(this).html("&#128161;&#xFE0E;"); // Lâmpada desligada
-                $(this).css("border", "none"); // Remover a borda
-                $(this).css("background-color", "white"); // Fundo do botão quando a lâmpada está desligada
+                usernameLabel.css("color", "black"); 
+                passwordLabel.css("color", "black"); 
+                toogleocultar.css("color", "black"); 
+
+
+                $(this).html("&#128161;&#xFE0E;");
+                $(this).css("border", "none");
+                $(this).css("background-color", "white");
             } else {
                 body.css("background-color", "black");
                 body.css("color", "white");
-                $(this).html("&#128161;"); // Lâmpada ligada.
-                $(this).css("border", "none"); // Remover a borda
-                $(this).css("background-color", "black"); // Fundo do botão quando a lâmpada está ligada
+                usernameLabel.css("color", "white"); 
+                passwordLabel.css("color", "white"); 
+                toogleocultar.css("color", "white"); 
+
+                $(this).html("&#128161;");
+                $(this).css("border", "none");
+                $(this).css("background-color", "black");
             }
         });
+
 
 
         $("#aaa").click(function () {
